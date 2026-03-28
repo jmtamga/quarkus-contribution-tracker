@@ -1,0 +1,43 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.card-overrides((elevated-container-color: orange,
+      elevated-container-elevation: red,
+    ));
+}
+
+.full-width {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-card-footer {
+  padding: 16px;
+}
+
+.error {
+  color: red;
+}
+
+.contribution-date-time {
+  display: flex;
+  flex-direction: row;
+
+  mat-form-field {
+    margin-right: 16px;
+  }
+}
+
+.form-contributions-card {
+  margin-top: 25px;
+}
+
+mat-form-field {
+  width: 200px;
+}

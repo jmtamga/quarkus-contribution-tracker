@@ -1,0 +1,8 @@
+export interface MenuItem {
+  icon: string;
+  label: string;
+  path: string;
+  children?: MenuItem[];
+  selected: boolean;
+  title?: string;
+}

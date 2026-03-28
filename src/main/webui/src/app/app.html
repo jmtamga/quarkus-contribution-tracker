@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1>{{ title() }}</h1>
+  <span class="toolbar-spacer"></span>
+  <button mat-icon-button (click)="toggleTheme()">
+    <mat-icon>{{ !darkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+
+  <button mat-icon-button [matMenuTriggerFor]="themeMenu">
+    <mat-icon>format_color_fill</mat-icon>
+  </button>
+  <mat-menu #themeMenu="matMenu">
+    @for (theme of getThemes(); track theme.id) {
+      <button mat-menu-item (click)="setTheme(theme.id)">
+        <div class="theme-menu-item">
+          <div class="color-preview" [style.background-color]="theme.primary"></div>
+          <span> {{ theme.displayName }}</span>
+        </div>
+      </button>
+    }
+  </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container autosize>
+  <mat-sidenav
+    [class]="!isCollapsed ? 'expanded app-viewer-nav-content' : 'collapsed'"
+    [mode]="isMobile ? 'over' : 'side'"
+    [opened]="isMobile ? 'false' : 'true'"
+  >
+    <app-menu [menuItems]="menu" [isCollapsed]="isCollapsed" />
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <app-loader />
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <mat-toolbar class="example-footer">Footer</mat-toolbar> -->

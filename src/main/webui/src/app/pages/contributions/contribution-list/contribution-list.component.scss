@@ -1,0 +1,41 @@
+.list-contributions-card {
+  margin-top: 25px;
+
+  .mat-icon {
+    cursor: pointer;
+  }
+
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.contribution-list-container {
+  max-height: 600px;
+  overflow: auto;
+}
+
+.mat-column-modification {
+  width: 64px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.export-pdf {
+  border-radius: 10px 10px 10px 10px !important;
+}
+
+.contributions-action-button-container {
+  display: flex;
+  justify-content: center;
+  height: 60px;
+
+  .contributions-action-icon {
+    font-size: 25px;
+    font-weight: bold;
+    height: 48px
+  }
+}

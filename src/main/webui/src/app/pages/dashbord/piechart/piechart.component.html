@@ -1,0 +1,24 @@
+<div class="chart-toolbar" style="margin-bottom: 1rem">
+  <mat-form-field appearance="outline">
+    <mat-label>Année</mat-label>
+    <mat-select [value]="selectedYear() ?? 'all'" (selectionChange)="onYearChange($event.value)">
+      <mat-option value="all">Toutes années</mat-option>
+      @for (year of yearOptions(); track year) {
+        <mat-option [value]="year">{{ year }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="chart-container" style="position: relative; height: 50vh; width: 50vw">
+  <canvas
+    baseChart
+    [data]="categoryChartData()"
+    [options]="pieChartOptions"
+    [type]="doughnutChartType"
+    [legend]="true"
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"
+  >
+  </canvas>
+</div>

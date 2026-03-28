@@ -1,0 +1,110 @@
+  @use '@angular/material' as mat;
+
+  mat-toolbar {
+    justify-content: space-between;
+
+    @include mat.toolbar-overrides((container-background-color: var(--mat-sys-primary-container),
+        container-text-color: var(--mat-sys-on-primary-container)));
+
+    @include mat.icon-button-overrides((icon-color: var(--mat-sys-on-primary-container)));
+  }
+
+  h1 {
+    padding: 0 1rem;
+  }
+
+  h2 {
+    padding: 1rem;
+  }
+
+  mat-toolbar {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+  }
+
+  mat-sidenav-container {
+    height: 100%;
+  }
+
+  // Move the content down so that it won't be hidden by the toolbar
+  mat-sidenav {
+    padding-top: 3.5rem;
+
+    @media screen and (min-width: 600px) {
+      padding-top: 4rem;
+    }
+
+    .entry {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem;
+    }
+  }
+
+  // Move the content down so that it won't be hidden by the toolbar
+  mat-sidenav-content {
+    padding-top: 3.5rem;
+
+    @media screen and (min-width: 600px) {
+      padding-top: 4rem;
+    }
+  }
+
+  .expanded {
+    width: 250px;
+    border-right: 1px solid var(--mat-sys-outline-variant);
+  }
+
+  .collapsed {
+    width: 80px;
+    border-right: 1px solid var(--mat-sys-outline-variant);
+  }
+
+  .toolbar-spacer {
+    flex: 1 1 auto;
+  }
+
+  .app-viewer-nav-content {
+    overflow: auto;
+    border-radius: 0;
+  }
+
+  .theme-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .color-preview {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+
+  .content {
+    height: calc(100vh - 130px);
+    border-radius: 10px;
+    margin: 16px;
+
+    padding: 16px;
+    overflow: auto;
+
+    margin-top: 60px;
+  }
+
+  .is-active {
+    background-color: var(--mat-sys-outline-variant);
+  }
+
+  .app-mat-list-item-link {
+    border-radius: 0px !important;
+  }
+
+  .example-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }

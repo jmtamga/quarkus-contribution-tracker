@@ -1,0 +1,78 @@
+<mat-card class="form-contributions-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title style="padding-bottom: 30px">{{ pageTitle() }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (submit)="onSubmit($event)" autocomplete="off">
+      <div style="display: flex; flex-direction: column">
+        <mat-form-field class="full-width">
+          <mat-label>Montant</mat-label>
+          <input matInput type="number" [formField]="contributionForm.amount" />
+          @if (contributionForm.amount().touched() && contributionForm.amount().invalid()) {
+            <p class="error">Le montant est invalide</p>
+          }
+        </mat-form-field>
+
+        <div class="contribution-date-time">
+          <mat-form-field class="full-width">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="datepicker" [formField]="contributionForm.date" />
+            <mat-datepicker-toggle matIconSuffix [for]="datepicker" />
+            <mat-datepicker #datepicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Heure</mat-label>
+            <input matInput [matTimepicker]="timepicker" [formField]="contributionForm.date" />
+            <mat-timepicker-toggle matIconSuffix [for]="timepicker" />
+            <mat-timepicker #timepicker />
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="full-width">
+          <mat-label>Donateur</mat-label>
+          <input matInput [formField]="contributionForm.donor!" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Bénéficiaire</mat-label>
+          <input matInput [formField]="contributionForm.beneficiary" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Catégorie</mat-label>
+          <mat-select [formField]="contributionForm.category">
+            @for (entry of categories; track entry) {
+              <mat-option [value]="entry">{{ getCategoryLabel(entry) }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <!--
+        <mat-form-field class="full-width">
+          <mat-label>Notes</mat-label>
+          <textarea matInput rows="3" [formField]="contributionForm.notes!"></textarea>
+        </mat-form-field> -->
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-footer class="example-card-footer">
+    <button matButton color="primary" (click)="retourListeContributions()">
+      <mat-icon>arrow_back</mat-icon>Retour
+    </button>
+
+    <button matButton color="primary" (click)="resetContributionForm()"><mat-icon>clear_all</mat-icon>Effacer</button>
+
+    <button matButton color="primary" [disabled]="contributionForm().invalid()" (click)="onSubmit($event, 'ADD')">
+      <mat-icon>save</mat-icon>Enregistrer
+    </button>
+
+    <button
+      matButton
+      color="primary"
+      [disabled]="contributionForm().invalid()"
+      (click)="onSubmit($event, 'ADD_AND_TERMINATE')"
+    >
+      <mat-icon>save</mat-icon>Enregistrer et terminer
+    </button>
+  </mat-card-footer>
+</mat-card>

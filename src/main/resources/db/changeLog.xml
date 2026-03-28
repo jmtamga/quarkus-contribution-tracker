@@ -1,0 +1,36 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet author="Jean-Marie TAMGA" id="0">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS contribution_management;
+        </sql>
+    </changeSet>
+    
+    <changeSet author="Jean-Marie TAMGA" id="1">
+        <createTable tableName="CONTRIBUTION_TBL" schemaName="contribution_management" ifNotExists="true">
+            <column name="CONTRIBUTION_ID" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CONTRIBUTION_DTE_CREATED" type="timestamp"/>
+            <column name="CONTRIBUTION_AMOUNT" type="numeric(38,2)"/>
+            <column name="CONTRIBUTION_BENEFICIARY" type="VARCHAR(255)"/>
+            <column name="CONTRIBUTION_DONOR" type="VARCHAR(255)"/>
+            <column name="CONTRIBUTION_CATEGORY" type="VARCHAR(255)"/>
+            <column name="CONTRIBUTION_DTE_MODIFIED" type="timestamp"/>
+            <column name="CONTRIBUTION_DESCRIPTION" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="Jean-Marie TAMGA" id="2" runAlways="true">
+    	<sql>
+    		CREATE sequence IF NOT EXISTS CONTRIBUTION_TBL_SEQ start with 1 increment by 50
+    	</sql>
+    </changeSet>
+</databaseChangeLog>
