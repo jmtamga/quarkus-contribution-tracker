@@ -69,7 +69,8 @@ export class PiechartComponent {
 
   constructor() {
     effect(() => {
-      // this.barChartData.datasets[0].data = this.service.monthlyTotals();
+      // Mise en comm
+      //this.barChartData.datasets[0].data = this.service.monthlyTotals();
     });
   }
 

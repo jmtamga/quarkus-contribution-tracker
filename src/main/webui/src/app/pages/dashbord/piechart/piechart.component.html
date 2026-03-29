@@ -1,4 +1,4 @@
-<div class="chart-toolbar" style="margin-bottom: 1rem">
+<div class="chart-toolbar by-year-select">
   <mat-form-field appearance="outline">
     <mat-label>Année</mat-label>
     <mat-select [value]="selectedYear() ?? 'all'" (selectionChange)="onYearChange($event.value)">
@@ -10,7 +10,7 @@
   </mat-form-field>
 </div>
 
-<div class="chart-container" style="position: relative; height: 50vh; width: 50vw">
+<div class="chart-container">
   <canvas
     baseChart
     [data]="categoryChartData()"
